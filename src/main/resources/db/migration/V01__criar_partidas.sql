@@ -1,0 +1,6 @@
+  CREATE TABLE partida (
+	codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+	pontos BIGINT(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO partida (pontos) values (10);

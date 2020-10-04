@@ -11,8 +11,8 @@ class NavigationBar extends React.Component {
                     <img src="https://img.icons8.com/ios-glyphs/30/000000/basketball-net.png"/>
                 </Link>
                <Nav className="mr-auto">
-                     <Link to={"add"} className="nav-link">Adicionar Partida</Link>
-                     <Link to={"list"} className="nav-link">Listar Partidas</Link>
+                     <Link to={"adicionar"} className="nav-link">Adicionar Partida</Link>
+                     <Link to={"listar"} className="nav-link">Listar Partidas</Link>
                </Nav>
              </Navbar>
         );

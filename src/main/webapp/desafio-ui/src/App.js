@@ -24,8 +24,8 @@ function App() {
                 <Col lg={12} style={marginTop}>
                     <Switch>
                        <Route path="/" exact component={BoasVindas}/>
-                       <Route path="/add" exact component={Partida}/>
-                       <Route path="/list" exact component={PartidaList}/>
+                       <Route path="/adicionar" exact component={Partida}/>
+                       <Route path="/listar" exact component={PartidaList}/>
                     </Switch>
                 </Col>
             </Row>

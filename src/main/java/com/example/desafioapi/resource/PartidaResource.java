@@ -16,6 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/partidas")
+@CrossOrigin(origins="http://localhost:3000")
 public class PartidaResource {
 
     @Autowired

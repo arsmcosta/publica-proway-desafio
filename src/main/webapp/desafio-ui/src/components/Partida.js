@@ -3,22 +3,39 @@ import React, {Component} from 'react';
 import {Card, Form, Button, Col} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSave, faPlusSquare} from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 export default class Partida extends Component {
 
     constructor(props){
         super(props);
-        this.state = {pontos:''};
+        this.state = this.initialState;
         this.partidaSalva = this.partidaSalva.bind(this);
         this.submitPartida = this.submitPartida.bind(this);
     }
 
-    submitPartida(event){
-        alert(this.state.pontos);
-        event.preventDefault();
+    initialState = {
+        pontos:''
     }
 
-    partidaSalva(event){
+    submitPartida = event => {
+        event.preventDefault();
+
+        const partida = {
+            pontos: this.state.pontos
+        };
+
+        axios.post("http://localhost:8080/partidas", partida)
+           .then(response => {
+               if(response.data != null) {
+                   this.setState(this.InitialState);
+                   alert("Partida registrada com sucesso");
+               }
+           });
+
+    }
+
+    partidaSalva = event => {
         this.setState({
             [event.target.name]:event.target.value
         });
@@ -33,7 +50,7 @@ export default class Partida extends Component {
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="formGridPontos">
                                         <Form.Label>Pontos</Form.Label>
-                                        <Form.Control  required
+                                        <Form.Control  required autoComplete="off"
                                         type="test" name="pontos"
                                         value={this.state.pontos}
                                         onChange={this.partidaSalva}

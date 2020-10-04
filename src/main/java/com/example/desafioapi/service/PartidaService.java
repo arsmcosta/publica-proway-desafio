@@ -3,6 +3,8 @@ package com.example.desafioapi.service;
 import com.example.desafioapi.model.Partida;
 import com.example.desafioapi.repository.PartidaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -18,7 +20,7 @@ public class PartidaService {
     private PartidaRepository partidaRepository;
 
     public Partida adicionarPartida(Partida partida) {
-        List<Partida> listaDePartidas = obterTodos();
+        List<Partida> listaDePartidas = partidaRepository.findAll();
 
         if (listaDePartidas.isEmpty()) {
             partida.setMax_temporada(partida.getPontos());
@@ -58,15 +60,15 @@ public class PartidaService {
             partida.setMin_temporada(min_temporada);
     }
 
-    public List<Partida> obterTodos() {
-        return partidaRepository.findAll();
-    }
-
     public Optional<Partida> obterPorCodigo(Long codigo) {
         return partidaRepository.findById(codigo);
     }
 
     public void deletarPorCodigo(Long codigo) {
         partidaRepository.deleteById(codigo);
+    }
+
+    public Page<Partida> obterTodos(Pageable pageable) {
+        return partidaRepository.findAll(pageable);
     }
 }

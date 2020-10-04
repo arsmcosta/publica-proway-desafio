@@ -2,9 +2,7 @@ package com.example.desafioapi.service;
 
 import com.example.desafioapi.model.Partida;
 import com.example.desafioapi.repository.PartidaRepository;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -19,26 +17,8 @@ public class PartidaService {
     @Autowired
     private PartidaRepository partidaRepository;
 
-    public Partida atualizar(Long codigo, Partida partida) {
-
-        Partida partidaSalva = this.partidaRepository.findById(codigo)
-                .orElseThrow(() -> new EmptyResultDataAccessException(1));
-
-        List<Partida> listaDePartidas = listar();
-
-//        if (!listaDePartidas.isEmpty() && partida.getCodigo() !=) {
-//            partida.setMax_temporada(partida.getPontos());
-//            partida.setMin_temporada(partida.getPontos());
-//            return partidaRepository.save(partida);
-//        }
-
-        BeanUtils.copyProperties(partida, partidaSalva, "codigo");
-
-        return partidaRepository.save(partidaSalva);
-    }
-
-    public Partida salvar(Partida partida) {
-        List<Partida> listaDePartidas = listar();
+    public Partida adicionarPartida(Partida partida) {
+        List<Partida> listaDePartidas = obterTodos();
 
         if (listaDePartidas.isEmpty()) {
             partida.setMax_temporada(partida.getPontos());
@@ -76,14 +56,6 @@ public class PartidaService {
             partida.setMin_temporada(partida.getPontos());
         else
             partida.setMin_temporada(min_temporada);
-    }
-
-
-    public List<Partida> listar() {
-        List<Partida> list = partidaRepository.findAll();
-        Partida partida = null;
-
-        return list;
     }
 
     public List<Partida> obterTodos() {

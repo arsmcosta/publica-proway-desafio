@@ -31,7 +31,7 @@ public class PartidaResource {
 
     @PostMapping
     public ResponseEntity<Partida> criar(@Valid @RequestBody Partida partida, HttpServletResponse response) {
-        Partida partidaSalva = partidaService.salvar(partida);
+        Partida partidaSalva = partidaService.adicionarPartida(partida);
 
         publisher.publishEvent(new RecursoCriadoEvent(this, response, partidaSalva.getCodigo()));
         return ResponseEntity.status(HttpStatus.CREATED).body(partidaSalva);
@@ -48,13 +48,5 @@ public class PartidaResource {
     public void remover(@PathVariable Long codigo) {
         partidaService.deletarPorCodigo(codigo);
     }
-
-    @PutMapping("/{codigo}")
-    public ResponseEntity<Partida> atualizar(@Valid @PathVariable Long codigo, @RequestBody Partida partida) {
-        Partida partidaSalva = partidaService.atualizar(codigo, partida);
-        return ResponseEntity.ok(partidaSalva);
-    }
-
-
 }
 

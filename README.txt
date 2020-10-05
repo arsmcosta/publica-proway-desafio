@@ -1,3 +1,12 @@
+Tecnologias utilizadas
+
+Spring Boot
+MySQL
+Flyway
+Mockito
+React
+
+
 dentro do diretorio desafio-api rodar 'mvn spring-boot:run'  - para iniciar o back-end
 
 dentro do diretorio \desafio-api\src\main\webapp\desafio-ui rodar 'npm install' em seguida, 'npm start' - para iniciar o front-end

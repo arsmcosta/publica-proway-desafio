@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import './Style.css';
 import {Card, Table, ButtonGroup, Button, InputGroup, FormControl} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faList, faStepBackward, faFastBackward, faStepForward, faFastForward} from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +13,7 @@ export default class PartidaList extends Component {
         this.state = {
             partidas : [],
             PaginaAtual : 1,
-            partidasPorPagina : 15
+            partidasPorPagina : 3
         };
     }
 
@@ -80,14 +81,6 @@ export default class PartidaList extends Component {
     render(){
         const{partidas, paginaAtual, paginasTotais} = this.state;
 
-        const pageNumCss = {
-            width: "45px",
-            border: "1px solid #17A2B8",
-            color: "#17A2B8",
-            textAlign: "center",
-            fontWeight: "bold"
-        };
-
         return (
             <Card className={"border border-dark bg-dark text-white"}>
                 <Card.Header><FontAwesomeIcon icon={faList} /> Lista de partidas</Card.Header>
@@ -142,7 +135,7 @@ export default class PartidaList extends Component {
                                         <FontAwesomeIcon icon={faStepBackward} />Prev
                                     </Button>
                                 </InputGroup.Prepend>
-                                <FormControl style={pageNumCss} className={"bg-dark"} name="paginaAtual" value={paginaAtual}
+                                <FormControl className={"page-num bg-dark"} name="paginaAtual" value={paginaAtual}
                                     onChange={this.changePage}/>
                                 <InputGroup.Append>
                                      <Button type="button" variant="outline-info" disabled={paginaAtual === paginasTotais ? true : false}

@@ -12,16 +12,12 @@ import Footer from './components/Footer';
 
 function App() {
 
-    const marginTop = {
-        marginTop:"20px"
-    }
-
   return (
     <Router>
         <NavigationBar/>
         <Container>
             <Row>
-                <Col lg={12} style={marginTop}>
+                <Col lg={12} className={"margin-top"}>
                     <Switch>
                        <Route path="/" exact component={BoasVindas}/>
                        <Route path="/adicionar" exact component={Partida}/>

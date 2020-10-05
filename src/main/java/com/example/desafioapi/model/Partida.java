@@ -21,6 +21,35 @@ public class Partida {
 
     private int min_temporada;
 
+    public Partida() {
+    }
+
+    public Partida(@PositiveOrZero @Max(1000) int pontos) {
+        this.pontos = pontos;
+    }
+
+    public Partida(long codigo, int pontos) {
+        this.codigo = codigo;
+        this.pontos = pontos;
+    }
+
+    public Partida(Long codigo, @PositiveOrZero @Max(1000) int pontos, int max_temporada, int min_temporada, int quebra_max, int quebra_min) {
+        this.codigo = codigo;
+        this.pontos = pontos;
+        this.max_temporada = max_temporada;
+        this.min_temporada = min_temporada;
+        this.quebra_max = quebra_max;
+        this.quebra_min = quebra_min;
+    }
+
+    public Partida(@PositiveOrZero @Max(1000) int pontos, int max_temporada, int min_temporada, int quebra_max, int quebra_min) {
+        this.pontos = pontos;
+        this.max_temporada = max_temporada;
+        this.min_temporada = min_temporada;
+        this.quebra_max = quebra_max;
+        this.quebra_min = quebra_min;
+    }
+
     public int getQuebra_max() {
         return quebra_max;
     }
@@ -40,7 +69,6 @@ public class Partida {
     private int quebra_max;
 
     private int quebra_min;
-
 
 
     public Long getCodigo() {
@@ -80,7 +108,8 @@ public class Partida {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Partida partida = (Partida) o;
-        return codigo.equals(partida.codigo);
+        return pontos == partida.pontos &&
+                codigo.equals(partida.codigo);
     }
 
     @Override

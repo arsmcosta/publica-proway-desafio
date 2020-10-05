@@ -5,7 +5,7 @@ import {Toast} from 'react-bootstrap';
 export default class Toasts extends Component {
     render(){
         const toastCss = {
-            postion: 'fixed',
+            postion: 'absolut',
             top: '10px',
             right: '10px',
             zIndex: '1',

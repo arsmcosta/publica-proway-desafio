@@ -64,10 +64,6 @@ public class PartidaService {
         return partidaRepository.findById(codigo);
     }
 
-    public void deletarPorCodigo(Long codigo) {
-        partidaRepository.deleteById(codigo);
-    }
-
     public Page<Partida> obterTodos(Pageable pageable) {
         return partidaRepository.findAll(pageable);
     }

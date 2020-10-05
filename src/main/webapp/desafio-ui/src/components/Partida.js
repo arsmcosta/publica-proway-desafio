@@ -64,7 +64,7 @@ export default class Partida extends Component {
                                                                         value={this.state.pontos}
                                                                         onChange={this.partidaSalva}
                                                                         className={"bg-dark text-white"}
-                                                                        placeholder="Digite a pontuação da partida" />
+                                                                        placeholder="Digite a pontuação (entre 0 e 100)" />
                                                                     </Form.Group>
                                                                 </Form.Row>
                                                             </Card.Body>

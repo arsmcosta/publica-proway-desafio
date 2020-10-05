@@ -13,7 +13,7 @@ export default class PartidaList extends Component {
         this.state = {
             partidas : [],
             PaginaAtual : 1,
-            partidasPorPagina : 3
+            partidasPorPagina : 10
         };
     }
 
